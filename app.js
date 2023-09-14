@@ -24,6 +24,7 @@ prevBtn.addEventListener('click', () => {
     if(currentActive < 1) {
         currentActive = 1;
     }
+    console.log(currentActive);
     update();
 });
 
@@ -44,12 +45,16 @@ const update = () => {
     // convert active circles and cirlces into a percentage
     progress.style.width = (actives.length - 1) / (circles.length - 1) * 100 + '%';
 
-    if(currentActive = 1) {
+    if(currentActive === 1) {
+        prevBtn.setAttribute('aria-disabled', 'true');
         prevBtn.disabled = true;
     } else if (currentActive === circles.length) {
+        nextBtn.setAttribute('aria-disabled', 'true');
         nextBtn.disabled = true;
     } else {
-        prevBtn.disabled = true;
-        nextBtn.disabled = true;
+        prevBtn.setAttribute('aria-disabled', 'false');
+        prevBtn.disabled = false;
+        nextBtn.setAttribute('aria-disabled', 'false');
+        nextBtn.disabled = false;
     }
 };
